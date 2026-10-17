@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Data;
 
 namespace Helper
 {
@@ -18,121 +19,127 @@ namespace Helper
             "-----", ".----", "..---", "...--", "....-",
             ".....", "-....", "--...", "---..", "----."
         };
-
-        private static readonly Dictionary<string, char> ReverseMorse = BuildReverseMorse();
-
-        public static int LetterToRow(char letter)
+        
+        private static int LetterRow(char letter)
         {
-            char upper = char.ToUpperInvariant(letter);
-            if (upper < 'A' || upper > 'Z')
-                throw new ArgumentException("Identifier must contain A-Z letters.");
-            return (upper - 'A') % 6 + 1;
+            letter = char.ToUpperInvariant(letter);
+            if (letter < 'A' || letter > 'Z')
+                throw new ArgumentException("Identifier must contain A-Z.");
+            return (letter - 'A') % PunchCardData.Rows;
         }
 
-        public static int DayToRow(int dayOfMonth)
-        {
-            if (dayOfMonth < 1 || dayOfMonth > 31)
-                throw new ArgumentOutOfRangeException(nameof(dayOfMonth));
-            return (dayOfMonth - 1) % 6 + 1;
-        }
-
-        public static int[] GetDecryptionRows(string identifier, int dayOfMonth)
+        public static PunchCardData GenerateDecryptionCard(string identifier, int dayOfMonth)
         {
             if (identifier == null || identifier.Length != 3)
-                throw new ArgumentException("Identifier must contain exactly three letters.", nameof(identifier));
+                throw new ArgumentException("Identifier must contain three letters.", nameof(identifier));
+            if (dayOfMonth < 1 || dayOfMonth > 31)
+                throw new ArgumentOutOfRangeException(nameof(dayOfMonth));
 
-            return new[]
-            {
-                LetterToRow(identifier[0]),
-                LetterToRow(identifier[1]),
-                LetterToRow(identifier[2]),
-                DayToRow(dayOfMonth)
-            };
+            var card = new PunchCardData();
+            for (int column = 0; column < 3; column++)
+                card.Punch(column, LetterRow(identifier[column]));
+            card.Punch(3, (dayOfMonth - 1) % PunchCardData.Rows);
+            return card;
         }
-
-        // A card's four rows repeat across letters only; spaces/newlines do not advance the index.
-        public static string ShiftText(string text, IReadOnlyList<int> rows, bool encrypt)
+        
+        public static PunchCardData GenerateDispatchCard(
+            int destinationIndex, int mailTypeIndex, int handlingIndex, int referenceIndex)
         {
-            if (text == null) throw new ArgumentNullException(nameof(text));
-            if (rows == null || rows.Count != 4)
-                throw new ArgumentException("Exactly four punched rows are required.", nameof(rows));
-            for (int i = 0; i < 4; i++)
-                if (rows[i] < 1 || rows[i] > 6)
-                    throw new ArgumentException("Every column must have a row from 1 to 6.", nameof(rows));
-
-            var result = new StringBuilder(text.Length);
-            int letterIndex = 0;
-            foreach (char c in text)
-            {
-                char upper = char.ToUpperInvariant(c);
-                if (upper >= 'A' && upper <= 'Z')
-                {
-                    int shift = rows[letterIndex % 4] * (encrypt ? 1 : -1);
-                    int index = (upper - 'A' + shift + 26) % 26;
-                    result.Append((char)('A' + index));
-                    letterIndex++;
-                }
-                else
-                {
-                    result.Append(c);
-                }
-            }
-            return result.ToString();
+            var card = new PunchCardData();
+            PunchDispatchValue(card, 0, destinationIndex);
+            PunchDispatchValue(card, 1, mailTypeIndex);
+            PunchDispatchValue(card, 2, handlingIndex);
+            PunchDispatchValue(card, 3, referenceIndex);
+            return card;
         }
 
-        public static string ToMorse(string text)
+        private static void PunchDispatchValue(PunchCardData card, int column, int row)
+        {
+            if (row < 0 || row >= PunchCardData.Rows)
+                throw new ArgumentOutOfRangeException(nameof(row), "Dispatch index must be 0-5.");
+
+            card.Punch(column, row);
+        }
+
+        public static string ShiftText(string text, PunchCardData card, bool encrypt)
         {
             if (text == null)
                 throw new ArgumentNullException(nameof(text));
+            if (card == null)
+                throw new ArgumentNullException(nameof(card));
 
-            var lines = text.ToUpper()
-                .Replace("\r\n", "\n")
-                .Replace('\r', '\n')
-                .Split('\n');
+            uint cipherState = card.ToKey();
+            var result = new StringBuilder(text.Length);
 
-            var encodedLines = new List<string>();
+            foreach (char character in text)
+            {
+                if (!IsEnglishLetter(character))
+                {
+                    result.Append(character);
+                    continue;
+                }
+
+                cipherState = GetNextCipherState(cipherState);
+                int letterShift = (int)(cipherState % 26);
+
+                if (!encrypt)
+                    letterShift = -letterShift;
+
+                result.Append(ShiftLetter(character, letterShift));
+            }
+
+            return result.ToString();
+        }
+
+        private static bool IsEnglishLetter(char character)
+        {
+            return (character >= 'A' && character <= 'Z') ||
+                   (character >= 'a' && character <= 'z');
+        }
+
+        private static uint GetNextCipherState(uint currentState)
+        {
+            //https://www.numerical.recipes/forumarchive/index.php/t-172.html
+            return unchecked(currentState * 1664525u + 1013904223u);
+        }
+
+        private static char ShiftLetter(char character, int shift)
+        {
+            char upperCase = char.ToUpperInvariant(character);
+            int letterIndex = upperCase - 'A';
+            int shiftedIndex = (letterIndex + shift + 26) % 26;
+            return (char)('A' + shiftedIndex);
+        }
+        
+        public static string ToMorse(string text)
+        {
+            if (text == null) throw new ArgumentNullException(nameof(text));
+            string normalized = text.ToUpperInvariant().Replace("\r\n", "\n").Replace('\r', '\n');
+            string[] lines = normalized.Split('\n');
+            var encodedLines = new List<string>(lines.Length);
 
             foreach (string line in lines)
             {
                 var tokens = new List<string>();
-
                 foreach (char c in line)
                 {
-                    if (c >= 'A' && c <= 'Z')
-                        tokens.Add(MorseLetters[c - 'A']);
-                    else if (c >= '0' && c <= '9')
-                        tokens.Add(MorseDigits[c - '0']);
+                    if (c >= 'A' && c <= 'Z') tokens.Add(MorseLetters[c - 'A']);
+                    else if (c >= '0' && c <= '9') tokens.Add(MorseDigits[c - '0']);
                     else if (c == ' ' || c == '\t')
                     {
-                        if (tokens.Count > 0 && tokens[^1] != "/")
-                            tokens.Add("/");
+                        if (tokens.Count > 0 && tokens[tokens.Count - 1] != "/") tokens.Add("/");
                     }
-                    else if (c == ':')
-                        tokens.Add("---...");
-                    else if (c == '-')
-                        tokens.Add("-....-");
-                    else
-                        throw new ArgumentException(
-                            $"Unsupported Morse character: {c}");
+                    else if (c == ':') tokens.Add("---...");
+                    else if (c == '-') tokens.Add("-....-");
+                    else throw new ArgumentException($"Unsupported Morse character: {c}");
                 }
 
-                while (tokens.Count > 0 && tokens[^1] == "/")
+                while (tokens.Count > 0 && tokens[tokens.Count - 1] == "/")
                     tokens.RemoveAt(tokens.Count - 1);
-
                 encodedLines.Add(string.Join(" ", tokens));
             }
 
             return string.Join("\n", encodedLines);
-        }
-        
-        private static Dictionary<string, char> BuildReverseMorse()
-        {
-            var map = new Dictionary<string, char>();
-            for (int i = 0; i < 26; i++) map.Add(MorseLetters[i], (char)('A' + i));
-            for (int i = 0; i < 10; i++) map.Add(MorseDigits[i], (char)('0' + i));
-            map.Add("---...", ':');
-            map.Add("-....-", '-');
-            return map;
         }
     }
 }

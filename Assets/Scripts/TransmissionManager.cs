@@ -54,7 +54,7 @@ public sealed class TransmissionManager : MonoBehaviour
         pastTransmissions =  new List<TransmissionData>();
     }
     
-    public void GenerateTransmission(int dayOfMonth)
+    public TransmissionData GenerateTransmission(int dayOfMonth)
     {
         if (dayOfMonth < 1 || dayOfMonth > 31)
             throw new ArgumentOutOfRangeException(nameof(dayOfMonth));
@@ -64,10 +64,7 @@ public sealed class TransmissionManager : MonoBehaviour
         int handlingIndex = UnityEngine.Random.Range(0, HandlingOptions.Length);
         int referenceIndex = UnityEngine.Random.Range(0, 6);
 
-        string identifier = new string(new[]
-        {
-            RandomLetter(), RandomLetter(), RandomLetter()
-        });
+        string identifier = new string(new[] { RandomLetter(), RandomLetter(), RandomLetter() });
         string destination = Destinations[destinationIndex];
         string mailType = MailTypes[typeIndex];
         string handling = HandlingOptions[handlingIndex];
@@ -79,41 +76,47 @@ public sealed class TransmissionManager : MonoBehaviour
             $"HANDLING: {handling}\n" +
             $"REFERENCE: {reference}";
 
-        int[] decryptionRows = TransmissionCodec.GetDecryptionRows(identifier, dayOfMonth);
-        int[] dispatchRows =
-        {
-            destinationIndex + 1,
-            typeIndex + 1,
-            handlingIndex + 1,
-            referenceIndex + 1
-        };
+        PunchCardData decryptionCard = TransmissionCodec.GenerateDecryptionCard(identifier, dayOfMonth);
+        PunchCardData dispatchCard = TransmissionCodec.GenerateDispatchCard(
+            destinationIndex, typeIndex, handlingIndex, referenceIndex);
 
-        string encryptedText = TransmissionCodec.ShiftText(plaintext, decryptionRows, true);
+        string encryptedText = TransmissionCodec.ShiftText(plaintext, decryptionCard, true);
+        // Identifier remains unencrypted, but is converted to Morse.
         string morseMessage = TransmissionCodec.ToMorse(identifier + "\n" + encryptedText);
+
+        if (currentTransmission != null)
+            pastTransmissions.Add(currentTransmission);
 
         currentTransmission = new TransmissionData(
             identifier, dayOfMonth, destination, mailType, handling, reference,
-            plaintext, encryptedText, morseMessage,
-            dispatchRows, PhoneNumbers[destinationIndex]);
-        
+            plaintext, encryptedText, morseMessage, dispatchCard, PhoneNumbers[destinationIndex]);
+
+        return currentTransmission;
     }
 
-    public string DecodeWithCard(int[] rows)
+    public string DecodeWithCard(PunchCardData card)
     {
         if (currentTransmission == null)
             throw new InvalidOperationException("No active transmission.");
-        return TransmissionCodec.ShiftText(currentTransmission.EncryptedText, rows, false);
+        return TransmissionCodec.ShiftText(currentTransmission.EncryptedText, card, false);
     }
 
-    public bool ValidateSubmission(int[] dispatchRows, string phoneNumber)
+    public bool ValidateSubmission(
+        PunchCardData decryptionCard,
+        PunchCardData dispatchCard,
+        string phoneNumber)
     {
-        var t = currentTransmission;
-        return t != null &&
-               dispatchRows != null &&
-               dispatchRows.SequenceEqual(t.ExpectedDispatchRows) &&
-               phoneNumber == t.ExpectedPhoneNumber;
+        if (currentTransmission == null || decryptionCard == null || dispatchCard == null)
+            return false;
+
+        
+        bool dispatchCorrect = dispatchCard.Matches(currentTransmission.ExpectedDispatchCard);
+        bool phoneCorrect = phoneNumber == currentTransmission.ExpectedPhoneNumber;
+
+        return dispatchCorrect && phoneCorrect;
     }
 
     private static char RandomLetter() =>
         (char)('A' + UnityEngine.Random.Range(0, 26));
+    
 }
