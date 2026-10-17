@@ -33,6 +33,9 @@ public sealed class TransmissionManager : MonoBehaviour
 
 
     public static TransmissionManager Instance;
+
+    public event Action TransmissionUpdated;
+    
     
     [Header("Transmissions")]
     [SerializeField] private TransmissionData currentTransmission = null;
@@ -90,7 +93,9 @@ public sealed class TransmissionManager : MonoBehaviour
         currentTransmission = new TransmissionData(
             identifier, dayOfMonth, destination, mailType, handling, reference,
             plaintext, encryptedText, morseMessage, dispatchCard, PhoneNumbers[destinationIndex]);
-
+        
+        
+        TransmissionUpdated?.Invoke();
         return currentTransmission;
     }
 
