@@ -37,6 +37,11 @@ public sealed class TransmissionManager : MonoBehaviour
     [Header("Transmissions")]
     [SerializeField] private TransmissionData currentTransmission = null;
     [SerializeField] private List<TransmissionData> pastTransmissions;
+
+    public TransmissionData CurrentTransmission
+    {
+        get => currentTransmission;
+    }
     
     private void Awake()
     {
