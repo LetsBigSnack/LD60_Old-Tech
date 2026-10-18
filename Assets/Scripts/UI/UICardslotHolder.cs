@@ -1,44 +1,52 @@
-using System;
+
 using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UICardslotHolder : MonoBehaviour, IDropHandler
 {
-    
     [SerializeField] private MonoBehaviour receiver;
 
     private IPunchcardReceiver punchcardReceiver;
+    private UIPunchcardController punchcard;
 
-    private UIPunchcardController punchard;
-    
     private void Awake()
     {
         punchcardReceiver = receiver as IPunchcardReceiver;
 
         if (punchcardReceiver == null)
-            Debug.LogError("Receiver must implement IPunchcardReceiver.", this);
+            Debug.LogError(
+                "Receiver must implement IPunchcardReceiver.",
+                this
+            );
     }
 
     private void Start()
     {
-        TransmissionManager.Instance.TransmissionUpdated += DeletePunchard;
+        TransmissionManager.Instance.TransmissionUpdated +=
+            DeletePunchcard;
     }
 
     private void OnDestroy()
     {
-        TransmissionManager.Instance.TransmissionUpdated -= DeletePunchard;
-    }
-
-    private void DeletePunchard()
-    {
-        if (punchard != null)
+        if (TransmissionManager.Instance != null)
         {
-            RemovePunchcard();
-            Destroy(punchard.gameObject);
+            TransmissionManager.Instance.TransmissionUpdated -=
+                DeletePunchcard;
         }
     }
-    
+
+    private void DeletePunchcard()
+    {
+        if (punchcard == null)
+            return;
+
+        UIPunchcardController card = punchcard;
+
+        RemovePunchcard();
+        Destroy(card.gameObject);
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null ||
@@ -48,22 +56,51 @@ public class UICardslotHolder : MonoBehaviour, IDropHandler
         if (!eventData.pointerDrag.TryGetComponent(
                 out UIPunchcardController card))
             return;
-        
+
+        if (punchcard != null)
+            return;
+
         if (!punchcardReceiver.InsertPunchcard(card.PunchCardData))
             return;
 
-        punchard = card;
-        punchard.CurrentSlot = this;
-        RectTransform cardRect = punchard.GetComponent<RectTransform>();
+        punchcard = card;
+        card.CurrentSlot = this;
 
+        RectTransform cardRect =
+            card.GetComponent<RectTransform>();
+        
         cardRect.SetParent(transform, false);
+
+        cardRect.anchorMin = new Vector2(0.5f, 0.5f);
+        cardRect.anchorMax = new Vector2(0.5f, 0.5f);
+        cardRect.pivot = new Vector2(0.5f, 0.5f);
         cardRect.anchoredPosition = Vector2.zero;
+        
+        if (card.TryGetComponent(out UIZoneResizer resizer))
+            resizer.UpdateVersion();
     }
 
     public void RemovePunchcard()
     {
+        if (punchcard == null)
+            return;
+
         punchcardReceiver.RemovePunchcard();
-        punchard.transform.SetParent(transform.parent, true);
+
+        UIPunchcardController card = punchcard;
+
+        punchcard = null;
+        card.CurrentSlot = null;
+
+        RectTransform cardRect =
+            card.GetComponent<RectTransform>();
+
+        Canvas canvas =
+            GetComponentInParent<Canvas>().rootCanvas;
+        
+        cardRect.SetParent(canvas.transform, true);
+
+        if (card.TryGetComponent(out UIZoneResizer resizer))
+            resizer.UpdateVersion();
     }
-    
 }
