@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
 
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
     public void SubmitTransmission()
     {
         PunchCardData dispatchDate = DispatchController.Instance.InsertedKeycard;
-        string phoneNumber = PhoneController.Instance.DialedNumbers.ToString();
+        string phoneNumber = string.Join("", PhoneController.Instance.DialedNumbers);
 
         if (TransmissionManager.Instance.ValidateSubmission(dispatchDate, phoneNumber))
         {

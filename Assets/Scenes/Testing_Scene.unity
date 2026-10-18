@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &63480559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -853,11 +853,10 @@ MonoBehaviour:
     isChapterStart: 1
     chapter: 4
     generatedText: 
-  - content: {fileID: 4900000, guid: 7b0b6c94c266e7f8b95ba0df68092e79, type: 3}
+  - content: {fileID: 4900000, guid: 5c9cddbe49d9ee79f9044ef35c1810cb, type: 3}
     isChapterStart: 1
     chapter: 4
     generatedText: 
-  maxLinesPerPage: 20
   pageBreakMarker: '[PAGE]'
   bookPages:
   - content: {fileID: 4900000, guid: 4817c20129dddd6688176bf3415405fa, type: 3}
@@ -3077,7 +3076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &884511353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3607,7 +3606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1033024908
 RectTransform:
   m_ObjectHideFlags: 0
