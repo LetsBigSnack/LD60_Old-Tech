@@ -1,5 +1,6 @@
 using System;
 using Data;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class DispatchController : MonoBehaviour, IPunchcardReceiver
@@ -7,7 +8,7 @@ public class DispatchController : MonoBehaviour, IPunchcardReceiver
 
     public static DispatchController Instance { get; private set; }
     
-    private PunchCardData insertedKeycard;
+    [SerializeReference] private PunchCardData insertedKeycard = null;
     
     public PunchCardData InsertedKeycard => insertedKeycard;
 

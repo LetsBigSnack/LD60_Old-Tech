@@ -55,7 +55,7 @@ public class UIPunchcardController : MonoBehaviour, IBeginDragHandler, IEndDragH
         Debug.Log("Card: OnBeginDrag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
-        currentSlot.RemovePunchcard(this);
+        currentSlot?.RemovePunchcard(); 
     }
 
     public void OnEndDrag(PointerEventData eventData)

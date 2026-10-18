@@ -57,7 +57,7 @@ public sealed class TransmissionManager : MonoBehaviour
         pastTransmissions =  new List<TransmissionData>();
     }
     
-    public TransmissionData GenerateTransmission(int dayOfMonth)
+    public void GenerateTransmission(int dayOfMonth)
     {
         if (dayOfMonth < 1 || dayOfMonth > 31)
             throw new ArgumentOutOfRangeException(nameof(dayOfMonth));
@@ -96,7 +96,6 @@ public sealed class TransmissionManager : MonoBehaviour
         
         
         TransmissionUpdated?.Invoke();
-        return currentTransmission;
     }
 
     public string DecodeWithCard(PunchCardData card)
@@ -107,11 +106,10 @@ public sealed class TransmissionManager : MonoBehaviour
     }
 
     public bool ValidateSubmission(
-        PunchCardData decryptionCard,
         PunchCardData dispatchCard,
         string phoneNumber)
     {
-        if (currentTransmission == null || decryptionCard == null || dispatchCard == null)
+        if (currentTransmission == null || dispatchCard == null)
             return false;
 
         

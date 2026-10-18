@@ -6,9 +6,9 @@ public class MorseController : MonoBehaviour, IPunchcardReceiver
 {
     [SerializeField] private UIMorseMachineController ui;
     
-    private PunchCardData insertedKeycard;
+    [SerializeReference] private PunchCardData insertedKeycard;
 
-
+    //TODO: rework and Split UI form Controller Controller
     private void Start()
     {
         TransmissionManager.Instance.TransmissionUpdated += UpdateDisplay;

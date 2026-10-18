@@ -1,3 +1,4 @@
+using System;
 using Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,6 +10,8 @@ public class UICardslotHolder : MonoBehaviour, IDropHandler
 
     private IPunchcardReceiver punchcardReceiver;
 
+    private UIPunchcardController punchard;
+    
     private void Awake()
     {
         punchcardReceiver = receiver as IPunchcardReceiver;
@@ -17,6 +20,25 @@ public class UICardslotHolder : MonoBehaviour, IDropHandler
             Debug.LogError("Receiver must implement IPunchcardReceiver.", this);
     }
 
+    private void Start()
+    {
+        TransmissionManager.Instance.TransmissionUpdated += DeletePunchard;
+    }
+
+    private void OnDestroy()
+    {
+        TransmissionManager.Instance.TransmissionUpdated -= DeletePunchard;
+    }
+
+    private void DeletePunchard()
+    {
+        if (punchard != null)
+        {
+            RemovePunchcard();
+            Destroy(punchard.gameObject);
+        }
+    }
+    
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null ||
@@ -29,19 +51,19 @@ public class UICardslotHolder : MonoBehaviour, IDropHandler
         
         if (!punchcardReceiver.InsertPunchcard(card.PunchCardData))
             return;
-        
-        card.CurrentSlot = this;
-        
-        RectTransform cardRect = card.GetComponent<RectTransform>();
+
+        punchard = card;
+        punchard.CurrentSlot = this;
+        RectTransform cardRect = punchard.GetComponent<RectTransform>();
 
         cardRect.SetParent(transform, false);
         cardRect.anchoredPosition = Vector2.zero;
     }
 
-    public void RemovePunchcard(UIPunchcardController card)
+    public void RemovePunchcard()
     {
         punchcardReceiver.RemovePunchcard();
-        card.transform.SetParent(transform.parent, true);
+        punchard.transform.SetParent(transform.parent, true);
     }
     
 }

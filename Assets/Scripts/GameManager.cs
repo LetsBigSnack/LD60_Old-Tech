@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     [Header("Date / Time")]
     [SerializeField] private int currentDay = 0;
     [SerializeField] private int maxDays = 5;
-    [SerializeField] private float timePerDay;
-    
+    [SerializeField] private float currenDayTime = 0;
+    [SerializeField] private float timePerDay = 300;
+    [SerializeField] private bool isDayRunning = true;
     
     [Header("Money")]
     [SerializeField] private int currentMoney = 0;
@@ -41,24 +42,36 @@ public class GameManager : MonoBehaviour
     
     private void StartDay()
     {
-        Debug.Log("Starting Day");
+        
         currentDay++;
+
+        if (currentDay > maxDays)
+        {
+            EndGame();
+        }
+        
+        Debug.Log("Starting Day");
+        currenDayTime = 0;
+        isDayRunning =  true;
         TransmissionManager.Instance.GenerateTransmission(currentDay);
 
-    }
-
-    public void EndDay()
-    {
-        
-    }
-
-    private void GenerateTransmissions()
-    {
-        
     }
     
     public void SubmitTransmission()
     {
+        PunchCardData dispatchDate = DispatchController.Instance.InsertedKeycard;
+        string phoneNumber = PhoneController.Instance.DialedNumbers.ToString();
+
+        if (TransmissionManager.Instance.ValidateSubmission(dispatchDate, phoneNumber))
+        {
+            currentMoney += rewardMoney;
+        }
+        else
+        {
+            currentMoney -= penaltyMoney;
+        }
+        
+        TransmissionManager.Instance.GenerateTransmission(currentDay);
         
     }
 
@@ -69,6 +82,14 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        //TODO: Pass Time
+        if (isDayRunning)
+        {
+            currenDayTime += Time.deltaTime;
+        }
+
+        if (currenDayTime >= timePerDay)
+        {
+            StartDay();
+        }
     }
 }
