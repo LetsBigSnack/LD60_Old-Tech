@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     [Header("Story-Events")] 
     [SerializeField] private int moneyThresholdGoodEnding = 300;
     [SerializeField] private int moneyThresholdBadEnding = 100;
+
+    public event Action<int> OnDayChange;
     
- 
+    
     private void Awake()
     {
         if (Instance != null)
@@ -45,7 +47,9 @@ public class GameManager : MonoBehaviour
     {
         
         currentDay++;
-
+        OnDayChange?.Invoke(currentDay);
+        
+        
         if (currentDay > maxDays)
         {
             EndGame();

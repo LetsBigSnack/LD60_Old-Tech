@@ -92,7 +92,7 @@ public class RotaryPhoneDial : MonoBehaviour,
             text.text = number.ToString();
             text.fontSize = numberSize;
             text.alignment = TextAlignmentOptions.Center;
-            text.color = Color.black;
+            text.color = Color.white;
             text.raycastTarget = false;
         }
     }
