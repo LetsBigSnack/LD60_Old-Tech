@@ -8,21 +8,23 @@ public class RotaryPhoneDial : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Numbers")]
+    [SerializeField] private TMP_FontAsset numberFont;
     [SerializeField] private float numberRadius = 100f;
     [SerializeField] private float numberSize = 32f;
     [SerializeField] private float holeRadius = 22f;
     [SerializeField] private float firstNumberAngle = 35f;
     [SerializeField] private float numberSpacing = 30f;
-
+    [SerializeField] private Color numberColor;
+    
+    
     [Header("Finger Stop")]
     [SerializeField] private float stopAngle = -25f;
-    [SerializeField] private float stopLabelSize = 20f;
 
     [Header("Return")]
     [SerializeField] private float returnSpeed = 300f;
 
     private RectTransform dial;
-    private RectTransform stopMarker;
+    private RectTransform numbersContainer;
 
     private Quaternion restingRotation;
     private float currentRotation;
@@ -39,22 +41,54 @@ public class RotaryPhoneDial : MonoBehaviour,
         restingRotation = dial.localRotation;
 
         CreateNumbers();
-        CreateFingerStop();
     }
 
     private void CreateNumbers()
     {
+        if (transform.parent == null)
+            return;
+
+        Transform parent = transform.parent;
+        Transform existing = parent.Find("DialNumbers");
+
+        GameObject containerObject;
+
+        if (existing != null)
+        {
+            containerObject = existing.gameObject;
+        }
+        else
+        {
+            containerObject = new GameObject(
+                "DialNumbers",
+                typeof(RectTransform)
+            );
+
+            containerObject.transform.SetParent(parent, false);
+        }
+
+        numbersContainer = containerObject.GetComponent<RectTransform>();
+
+        numbersContainer.anchorMin = dial.anchorMin;
+        numbersContainer.anchorMax = dial.anchorMax;
+        numbersContainer.pivot = dial.pivot;
+        numbersContainer.sizeDelta = dial.sizeDelta;
+        numbersContainer.anchoredPosition = dial.anchoredPosition;
+
+        // Keep the numbers above the rotating disk.
+        numbersContainer.SetAsLastSibling();
+
         for (int i = 1; i <= 10; i++)
         {
             int number = i % 10;
             string objectName = $"Number_{number}";
 
-            Transform existing = transform.Find(objectName);
+            Transform numberExisting = numbersContainer.Find(objectName);
             GameObject numberObject;
 
-            if (existing != null)
+            if (numberExisting != null)
             {
-                numberObject = existing.gameObject;
+                numberObject = numberExisting.gameObject;
             }
             else
             {
@@ -65,7 +99,7 @@ public class RotaryPhoneDial : MonoBehaviour,
                 );
 
                 numberObject.transform.SetParent(
-                    transform,
+                    numbersContainer,
                     false
                 );
             }
@@ -78,8 +112,7 @@ public class RotaryPhoneDial : MonoBehaviour,
             rect.pivot = new Vector2(0.5f, 0.5f);
             rect.sizeDelta = new Vector2(50f, 50f);
 
-            float angle =
-                GetNumberAngle(number) * Mathf.Deg2Rad;
+            float angle = GetNumberAngle(number) * Mathf.Deg2Rad;
 
             rect.anchoredPosition = new Vector2(
                 Mathf.Cos(angle),
@@ -90,74 +123,15 @@ public class RotaryPhoneDial : MonoBehaviour,
                 numberObject.GetComponent<TextMeshProUGUI>();
 
             text.text = number.ToString();
+
+            if (numberFont != null)
+                text.font = numberFont;
+
             text.fontSize = numberSize;
             text.alignment = TextAlignmentOptions.Center;
-            text.color = Color.white;
+            text.color = numberColor;
             text.raycastTarget = false;
         }
-    }
-
-    private void CreateFingerStop()
-    {
-        if (transform.parent == null)
-            return;
-
-        Transform parent = transform.parent;
-        Transform existing = parent.Find("FingerStop");
-
-        GameObject stopObject;
-
-        if (existing != null)
-        {
-            stopObject = existing.gameObject;
-        }
-        else
-        {
-            stopObject = new GameObject(
-                "FingerStop",
-                typeof(RectTransform),
-                typeof(TextMeshProUGUI)
-            );
-
-            stopObject.transform.SetParent(parent, false);
-        }
-
-        stopMarker =
-            stopObject.GetComponent<RectTransform>();
-
-        stopMarker.anchorMin = new Vector2(0.5f, 0.5f);
-        stopMarker.anchorMax = new Vector2(0.5f, 0.5f);
-        stopMarker.pivot = new Vector2(0.5f, 0.5f);
-        stopMarker.sizeDelta = new Vector2(70f, 40f);
-
-        TextMeshProUGUI text =
-            stopObject.GetComponent<TextMeshProUGUI>();
-
-        text.text = "STOP";
-        text.fontSize = stopLabelSize;
-        text.alignment = TextAlignmentOptions.Center;
-        text.color = Color.red;
-        text.raycastTarget = false;
-        
-        stopMarker.SetAsLastSibling();
-
-        UpdateFingerStopPosition();
-    }
-
-    private void UpdateFingerStopPosition()
-    {
-        if (stopMarker == null)
-            return;
-
-        float angle = stopAngle * Mathf.Deg2Rad;
-
-        Vector3 offset = new Vector3(
-            Mathf.Cos(angle) * numberRadius,
-            Mathf.Sin(angle) * numberRadius,
-            0f
-        );
-        
-        stopMarker.localPosition = dial.localPosition + offset;
     }
 
     private float GetNumberAngle(int number)
@@ -214,8 +188,7 @@ public class RotaryPhoneDial : MonoBehaviour,
                 dial.position
             );
 
-        Vector2 direction =
-            eventData.position - center;
+        Vector2 direction = eventData.position - center;
 
         return Mathf.Atan2(
             direction.y,
@@ -234,7 +207,7 @@ public class RotaryPhoneDial : MonoBehaviour,
             return;
 
         float numberAngle = GetNumberAngle(selectedNumber);
-        
+
         maximumRotation = Mathf.Repeat(
             numberAngle - stopAngle,
             360f
@@ -259,7 +232,6 @@ public class RotaryPhoneDial : MonoBehaviour,
         );
 
         previousMouseAngle = mouseAngle;
-
 
         currentRotation = Mathf.Clamp(
             currentRotation - delta,
