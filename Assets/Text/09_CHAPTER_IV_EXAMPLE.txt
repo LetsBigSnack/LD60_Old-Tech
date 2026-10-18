@@ -1,0 +1,25 @@
+<size=120%><b>CHAPTER IV | EXAMPLE</b></size>
+
+<size=110%><b><color=#8B2929>4.6 COMPLETE DISPATCH EXAMPLE</color></b></size>
+
+<b>DECIPHERED TELEGRAM:</b>
+
+<b>DESTINATION: MILITARY</b>
+<b>TYPE: CLASSIFIED</b>
+<b>HANDLING: FORWARD</b>
+<b>REFERENCE: B</b>
+
+Consult the four tables.
+
+Column 1: MILITARY = Row 3
+Column 2: CLASSIFIED = Row 3
+Column 3: FORWARD = Row 5
+Column 4: B = Row 2
+
+<b>REQUIRED PUNCH PATTERN: 3 - 3 - 5 - 2</b>
+
+Insert the prepared card into the dispatch terminal.
+
+A dispatch card is an official administrative order. Errors may result in delays, misclassification, or unauthorized destruction of correspondence.
+
+<b>A SINGLE HOLE MAY CHANGE THE DESTINY OF A THOUSAND LETTERS.</b>

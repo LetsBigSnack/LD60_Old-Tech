@@ -1,0 +1,30 @@
+<size=120%><b>CREDITS</b></size>
+
+<b>ACKNOWLEDGMENTS AND OFFICIAL NOTICE</b>
+
+<b>MINISTRY OF POSTAL COMMUNICATIONS</b>
+Central Telegraph Directorate
+Department of Operator Training and Standardization
+
+Official Operator's Handbook | 1967 Edition
+
+Prepared for the continued improvement of national correspondence, administrative discipline, and technical excellence.
+
+COMMIE-nication
+A game about messages, machinery, and obedience.
+
+Developed by: DotDamageGames
+Programming: DotDamageGames
+Art and Interface: DotDamageGames
+Audio: [Credits]
+
+This handbook and its fictional institutions are part of the game world.
+
+<b>REMEMBER, COMRADE:</b>
+
+The nation speaks through its wires.
+The operator ensures that it is heard.
+
+<b>END OF HANDBOOK</b>
+
+<b>RETURN TO YOUR POST.</b>

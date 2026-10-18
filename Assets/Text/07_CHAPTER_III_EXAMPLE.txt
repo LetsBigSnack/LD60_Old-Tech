@@ -1,0 +1,21 @@
+<size=120%><b>CHAPTER III | EXAMPLE</b></size>
+
+<size=110%><b><color=#8B2929>3.4 COMPLETE EXAMPLE</color></b></size>
+
+Identification code: KOM
+Current date: October 17
+
+Column 1: K = Row 5
+Column 2: O = Row 3
+Column 3: M = Row 1
+Column 4: 17 = Row 5
+
+<b>REQUIRED PUNCH PATTERN: 5 - 3 - 1 - 5</b>
+
+Insert the completed card into the deciphering apparatus.
+
+The apparatus will interpret the punched positions and process the encrypted transmission.
+
+If the resulting text is unreadable, verify the identification code, date, and punched positions. Discard any incorrectly prepared card.
+
+<b>THE MACHINE OBEYS THE CARD. THE CARD MUST OBEY THE OPERATOR.</b>

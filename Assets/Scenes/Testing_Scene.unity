@@ -783,7 +783,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &187274108
 Transform:
@@ -812,46 +812,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b12b383b03cff189dddec40f2c706b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bookPages:
-  - content: Page 1
+  sourcePages:
+  - content: {fileID: 4900000, guid: 4817c20129dddd6688176bf3415405fa, type: 3}
     isChapterStart: 1
     chapter: 0
-  - content: Page 2
+    generatedText: 
+  - content: {fileID: 4900000, guid: b21a38cd466ca345a97cc88dab149d5f, type: 3}
     isChapterStart: 0
     chapter: 0
-  - content: Page 3
+    generatedText: 
+  - content: {fileID: 4900000, guid: 3dc229433c5c916bd82711804663af73, type: 3}
     isChapterStart: 0
     chapter: 0
-  - content: Page 4
-    isChapterStart: 0
-    chapter: 0
-  - content: Page 5
+    generatedText: 
+  - content: {fileID: 4900000, guid: cf07ba297b884eaecbc04e962fe5b4f8, type: 3}
     isChapterStart: 1
     chapter: 1
-  - content: Page 5
+    generatedText: 
+  - content: {fileID: 4900000, guid: 773fea6452a61c88da61901c07c70641, type: 3}
+    isChapterStart: 0
+    chapter: 1
+    generatedText: 
+  - content: {fileID: 4900000, guid: 0c004652b06d776a696044f22bc70d83, type: 3}
     isChapterStart: 1
     chapter: 2
-  - content: Page 6
+    generatedText: 
+  - content: {fileID: 4900000, guid: 86917bd3b5758652697951a2a8b4b919, type: 3}
     isChapterStart: 0
     chapter: 2
-  - content: Page 6
-    isChapterStart: 0
-    chapter: 2
-  - content: Page 8
+    generatedText: 
+  - content: {fileID: 4900000, guid: 88c726410d327d37b93a8f5f531647eb, type: 3}
     isChapterStart: 1
     chapter: 3
-  - content: Page 9
+    generatedText: 
+  - content: {fileID: 4900000, guid: f4cc5f9b201b6f37c9426234488964e5, type: 3}
+    isChapterStart: 0
+    chapter: 3
+    generatedText: 
+  - content: {fileID: 4900000, guid: 7b0b6c94c266e7f8b95ba0df68092e79, type: 3}
     isChapterStart: 1
     chapter: 4
+    generatedText: 
+  - content: {fileID: 4900000, guid: 7b0b6c94c266e7f8b95ba0df68092e79, type: 3}
+    isChapterStart: 1
+    chapter: 4
+    generatedText: 
+  maxLinesPerPage: 20
+  pageBreakMarker: '[PAGE]'
+  bookPages:
+  - content: {fileID: 4900000, guid: 4817c20129dddd6688176bf3415405fa, type: 3}
+    isChapterStart: 1
+    chapter: 0
+    generatedText: 
+  - content: {fileID: 4900000, guid: b21a38cd466ca345a97cc88dab149d5f, type: 3}
+    isChapterStart: 0
+    chapter: 0
+    generatedText: 
+  - content: {fileID: 4900000, guid: 3dc229433c5c916bd82711804663af73, type: 3}
+    isChapterStart: 0
+    chapter: 0
+    generatedText: 
+  - content: {fileID: 4900000, guid: cf07ba297b884eaecbc04e962fe5b4f8, type: 3}
+    isChapterStart: 1
+    chapter: 1
+    generatedText: 
+  - content: {fileID: 4900000, guid: 773fea6452a61c88da61901c07c70641, type: 3}
+    isChapterStart: 0
+    chapter: 1
+    generatedText: 
+  - content: {fileID: 4900000, guid: 0c004652b06d776a696044f22bc70d83, type: 3}
+    isChapterStart: 1
+    chapter: 2
+    generatedText: 
+  - content: {fileID: 4900000, guid: 86917bd3b5758652697951a2a8b4b919, type: 3}
+    isChapterStart: 0
+    chapter: 2
+    generatedText: 
+  - content: {fileID: 4900000, guid: 88c726410d327d37b93a8f5f531647eb, type: 3}
+    isChapterStart: 1
+    chapter: 3
+    generatedText: 
+  - content: {fileID: 4900000, guid: f4cc5f9b201b6f37c9426234488964e5, type: 3}
+    isChapterStart: 0
+    chapter: 3
+    generatedText: 
+  - content: {fileID: 4900000, guid: 7b0b6c94c266e7f8b95ba0df68092e79, type: 3}
+    isChapterStart: 1
+    chapter: 4
+    generatedText: 
+  - content: {fileID: 4900000, guid: 5c9cddbe49d9ee79f9044ef35c1810cb, type: 3}
+    isChapterStart: 0
+    chapter: 4
+    generatedText: 
   currentPage: 0
   displayedLeft:
-    content: 
+    content: {fileID: 0}
     isChapterStart: 0
     chapter: 0
+    generatedText: 
   displayedRight:
-    content: 
+    content: {fileID: 0}
     isChapterStart: 0
     chapter: 0
+    generatedText: 
 --- !u!1 &226381439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,8 +1914,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5426,8 +5489,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

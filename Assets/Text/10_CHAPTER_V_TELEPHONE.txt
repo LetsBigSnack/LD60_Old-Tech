@@ -1,0 +1,31 @@
+<size=120%><b>CHAPTER V | TELEPHONE</b></size>
+
+<b>THE FINAL LINK IN THE CHAIN</b>
+
+Every completed dispatch must be confirmed by telephone.
+
+The rotary telephone connects the operator to the Ministry's authorized receiving departments.
+
+The correct telephone number is determined exclusively by the telegram's DESTINATION field.
+
+<size=110%><b><color=#8B2929>5.1 OFFICIAL TELEPHONE DIRECTORY</color></b></size>
+
+Civilian Postal Office: 101
+Government Bureau: 204
+Military Command: 315
+Industrial Administration: 426
+Intelligence Directorate: 537
+International Dispatch: 648
+
+<size=110%><b><color=#8B2929>5.2 DIALING PROCEDURE</color></b></size>
+
+1. Verify the destination indicated by the deciphered telegram.
+2. Locate the corresponding department in the official directory.
+3. Dial all three digits using the rotary telephone.
+4. Confirm the completed dispatch.
+
+Do not confuse the identification code with the destination. The identification code is used only for deciphering; the destination determines the telephone number.
+
+The Ministry will evaluate the submitted dispatch instructions and telephone destination.
+
+<b>THE VOICE OF THE MINISTRY MUST NEVER TREMBLE.</b>

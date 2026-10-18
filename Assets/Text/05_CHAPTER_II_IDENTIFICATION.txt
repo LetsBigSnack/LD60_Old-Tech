@@ -1,0 +1,25 @@
+<size=120%><b>CHAPTER II | IDENTIFICATION</b></size>
+
+<size=110%><b><color=#8B2929>2.4 IDENTIFYING THE TRANSMISSION</color></b></size>
+
+Every incoming telegram begins with a three-letter identification code.
+
+These first three letters are transmitted without encryption.
+
+The remaining message is encrypted and must be processed by the deciphering apparatus.
+
+<b>EXAMPLE</b>
+
+-.- --- --
+
+Decode each letter individually:
+
+<b>-.- = K</b>
+<b>--- = O</b>
+<b>-- = M</b>
+
+<b>IDENTIFICATION CODE: KOM</b>
+
+Record these letters carefully. They determine the required deciphering punch card.
+
+<b>ONE MISREAD SIGNAL MAY MISDIRECT AN ENTIRE REGIMENT.</b>

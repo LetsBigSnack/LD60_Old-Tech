@@ -1,0 +1,41 @@
+<size=120%><b>CHAPTER II | MORSE CODE</b></size>
+
+<b>THE LANGUAGE OF THE TELEGRAPH</b>
+
+All incoming communications arrive in International Morse Code.
+
+DOT: . (short signal)
+DASH: - (long signal)
+
+Each letter is separated by a space. Words are separated by /. Line breaks indicate separate lines of the telegram.
+
+<size=110%><b><color=#8B2929>2.1 INTERNATIONAL MORSE ALPHABET</color></b></size>
+
+A .-       N -.
+B -...     O ---
+C -.-.     P .--.
+D -..      Q --.-
+E .        R .-.
+F ..-.     S ...
+G --.      T -
+H ....     U ..-
+I ..       V ...-
+J .---     W .--
+K -.-      X -..-
+L .-..     Y -.--
+M --       Z --..
+
+<size=110%><b><color=#8B2929>2.2 NUMERICAL SIGNALS</color></b></size>
+
+0 -----    5 .....
+1 .----    6 -....
+2 ..---    7 --...
+3 ...--    8 ---..
+4 ....-    9 ----.
+
+<size=110%><b><color=#8B2929>2.3 ADDITIONAL SYMBOLS</color></b></size>
+
+Colon (:)  ---...
+Hyphen (-) -....-
+Word separator: /
+New line: actual line break

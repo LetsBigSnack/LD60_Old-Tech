@@ -1,9 +1,8 @@
 using System;
+using UnityEngine;
 
 namespace Data
 {
-    
-    [Serializable]
     public enum BookChapter
     {
         Intro,
@@ -12,13 +11,16 @@ namespace Data
         Disptach,
         Telefon
     }
-    
-    
-    [System.Serializable]
+
+    [Serializable]
     public class BookPage
     {
-        public string content;
+        public TextAsset content;
         public bool isChapterStart;
         public BookChapter chapter;
+
+        [TextArea(2, 10)] public string generatedText;
+
+        public string Text => generatedText ?? (content != null ? content.text : "");
     }
 }

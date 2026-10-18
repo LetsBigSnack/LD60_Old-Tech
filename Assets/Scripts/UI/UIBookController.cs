@@ -35,8 +35,11 @@ namespace UI
       
         private void DisplayContent(BookPage leftPage, BookPage rightPage, bool displayPrevious,  bool displayNext)
         {
-            leftPageText.text = leftPage?.content;
-            rightPageText.text = rightPage?.content;
+            leftPageText.richText = true;
+            rightPageText.richText = true;
+            
+            leftPageText.text = leftPage != null ? leftPage.Text : "";
+            rightPageText.text = rightPage != null ? rightPage.Text : "";
             previousButton.SetActive(displayPrevious);
             nextButton.SetActive(displayNext);
         }

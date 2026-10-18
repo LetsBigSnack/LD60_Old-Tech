@@ -1,0 +1,42 @@
+<size=120%><b>CHAPTER III | DECIPHERING</b></size>
+
+<b>THE SCIENCE OF STATE SECRECY</b>
+
+To protect the nation's correspondence, the Ministry employs mechanical encryption.
+
+Each transmission requires a deciphering punch card prepared from its identification code and the current day of the month.
+
+<size=110%><b><color=#8B2929>3.1 THE PUNCH CARD</color></b></size>
+
+Every standard Ministry punch card contains 4 vertical columns, 6 numbered rows, and 24 possible punching positions.
+
+For standard deciphering operations, punch exactly one hole in each column.
+
+Column 1: First identification letter
+Column 2: Second identification letter
+Column 3: Third identification letter
+Column 4: Current day of the month
+
+Additional holes may alter the deciphering result. Incorrectly punched cards should be discarded and replaced.
+
+<size=110%><b><color=#8B2929>3.2 IDENTIFICATION LETTER TABLE</color></b></size>
+
+Row 1: A G M S Y
+Row 2: B H N T Z
+Row 3: C I O U
+Row 4: D J P V
+Row 5: E K Q W
+Row 6: F L R X
+
+For example: K = Row 5; O = Row 3; M = Row 1.
+
+<size=110%><b><color=#8B2929>3.3 DATE TABLE</color></b></size>
+
+Row 1: 1, 7, 13, 19, 25, 31
+Row 2: 2, 8, 14, 20, 26
+Row 3: 3, 9, 15, 21, 27
+Row 4: 4, 10, 16, 22, 28
+Row 5: 5, 11, 17, 23, 29
+Row 6: 6, 12, 18, 24, 30
+
+Always use the current working date.
