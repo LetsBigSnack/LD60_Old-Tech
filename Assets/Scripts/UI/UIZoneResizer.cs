@@ -20,7 +20,8 @@ public class UIZoneResizer : MonoBehaviour, IDragHandler
     private void Awake()
     {
         canvas = GetComponentInParent<Canvas>().rootCanvas;
-
+        
+        deskZone = GameObject.FindGameObjectWithTag("BigArea").GetComponent<RectTransform>();
         
         ActiveVersion = bigVersion.activeSelf
             ? bigVersion
