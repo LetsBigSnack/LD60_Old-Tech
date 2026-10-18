@@ -16,19 +16,36 @@ public class UIZoneResizer : MonoBehaviour, IDragHandler
     public GameObject ActiveVersion { get; private set; }
 
     private Canvas canvas;
+    private UIDraggable draggable;
 
     private void Awake()
     {
         canvas = GetComponentInParent<Canvas>().rootCanvas;
-        
-        deskZone = GameObject.FindGameObjectWithTag("BigArea").GetComponent<RectTransform>();
-        
+        draggable = GetComponent<UIDraggable>();
+
+        if (deskZone == null)
+        {
+            deskZone = GameObject
+                .FindGameObjectWithTag("BigArea")
+                .GetComponent<RectTransform>();
+        }
+
         ActiveVersion = bigVersion.activeSelf
             ? bigVersion
             : smallVersion;
 
         bigVersion.SetActive(ActiveVersion == bigVersion);
         smallVersion.SetActive(ActiveVersion == smallVersion);
+    }
+
+    private void OnEnable()
+    {
+        draggable.DragEnded += OnDragEnded;
+    }
+
+    private void OnDisable()
+    {
+        draggable.DragEnded -= OnDragEnded;
     }
 
     private void Start()
@@ -48,6 +65,12 @@ public class UIZoneResizer : MonoBehaviour, IDragHandler
         UpdateVersion(eventData);
     }
 
+    private void OnDragEnded()
+    {
+        // Recalculate using the actual final position.
+        UpdateVersion();
+    }
+
     public void UpdateVersion(PointerEventData eventData = null)
     {
         Camera camera = GetUICamera();
@@ -55,12 +78,10 @@ public class UIZoneResizer : MonoBehaviour, IDragHandler
 
         if (eventData != null)
         {
-            
             screenPoint = eventData.position;
         }
         else
         {
-            
             RectTransform activeRect =
                 ActiveVersion.GetComponent<RectTransform>();
 

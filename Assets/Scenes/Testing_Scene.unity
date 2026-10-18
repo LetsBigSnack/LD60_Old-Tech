@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 558, y: 755}
+  m_AnchoredPosition: {x: -637, y: 312}
   m_SizeDelta: {x: 512, y: 384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63480560
@@ -1437,6 +1437,7 @@ GameObject:
   - component: {fileID: 291264886}
   - component: {fileID: 291264888}
   - component: {fileID: 291264887}
+  - component: {fileID: 291264889}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -1515,6 +1516,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291264884}
   m_CullTransparentMesh: 1
+--- !u!114 &291264889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291264884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3672a3b8e11444d18127683023554742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UIDropZone
+  acceptedTypes: 1
 --- !u!1 &324736087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1543, y: -314}
+  m_AnchoredPosition: {x: 0, y: 344}
   m_SizeDelta: {x: 640, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &453914038
@@ -3325,7 +3339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1413, y: 590}
+  m_AnchoredPosition: {x: 641, y: 344}
   m_SizeDelta: {x: 559.39, y: 363.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884511354
@@ -3443,9 +3457,10 @@ GameObject:
   - component: {fileID: 963872688}
   - component: {fileID: 963872690}
   - component: {fileID: 963872689}
+  - component: {fileID: 963872691}
   m_Layer: 5
   m_Name: SmallTable
-  m_TagString: BigArea
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3466,7 +3481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1322, y: 91}
+  m_AnchoredPosition: {x: -672, y: -314}
   m_SizeDelta: {x: 448, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963872689
@@ -3507,6 +3522,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963872687}
   m_CullTransparentMesh: 1
+--- !u!114 &963872691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963872687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3672a3b8e11444d18127683023554742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UIDropZone
+  acceptedTypes: -1
 --- !u!1 &973022895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3712,7 @@ GameObject:
   - component: {fileID: 1021670400}
   - component: {fileID: 1021670402}
   - component: {fileID: 1021670401}
+  - component: {fileID: 1021670403}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -3762,6 +3791,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021670398}
   m_CullTransparentMesh: 1
+--- !u!114 &1021670403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021670398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3672a3b8e11444d18127683023554742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UIDropZone
+  acceptedTypes: 1
 --- !u!1 &1031455803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,7 +3841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1113, y: 763}
+  m_AnchoredPosition: {x: 773, y: -357}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031455805
@@ -4295,13 +4337,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb85cf47e16dcaf297a0d8080fc4746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  numberFont: {fileID: 0}
   numberRadius: 100
   numberSize: 32
   holeRadius: 22
   firstNumberAngle: 35
   numberSpacing: 30
+  numberColor: {r: 0, g: 0, b: 0, a: 0}
   stopAngle: -25
-  stopLabelSize: 20
   returnSpeed: 240
 --- !u!58 &1078474179
 CircleCollider2D:
@@ -4428,13 +4471,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb85cf47e16dcaf297a0d8080fc4746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  numberFont: {fileID: 11400000, guid: d7f62a054c9c9bdc586f37ca3475fd44, type: 2}
   numberRadius: 100
   numberSize: 32
   holeRadius: 22
-  firstNumberAngle: 35
+  firstNumberAngle: 30
   numberSpacing: 30
+  numberColor: {r: 0.8039216, g: 0.7294118, b: 0.5803922, a: 1}
   stopAngle: -25
-  stopLabelSize: 20
   returnSpeed: 240
 --- !u!58 &1123834229
 CircleCollider2D:
@@ -5241,16 +5285,16 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1294177178}
+  - {fileID: 1759950020}
+  - {fileID: 1869979648}
+  - {fileID: 2138297811}
+  - {fileID: 963872688}
+  - {fileID: 1031455804}
   - {fileID: 63480559}
   - {fileID: 453914036}
   - {fileID: 884511353}
-  - {fileID: 1031455804}
-  - {fileID: 2138297811}
-  - {fileID: 963872688}
-  - {fileID: 1576532425}
   - {fileID: 1936851435}
-  - {fileID: 1759950020}
-  - {fileID: 1869979648}
+  - {fileID: 1576532425}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5646,7 +5690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1564, y: 837}
+  m_AnchoredPosition: {x: -780, y: -323}
   m_SizeDelta: {x: 116, y: 188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576532426
@@ -6371,7 +6415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -832, y: 819}
+  m_AnchoredPosition: {x: 773, y: -26}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759950021
@@ -6680,7 +6724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.329956, y: 791}
+  m_AnchoredPosition: {x: -672, y: 2}
   m_SizeDelta: {x: 448, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869979649
@@ -7579,8 +7623,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1457, y: -424}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -586, y: -314}
+  m_SizeDelta: {x: 196.2612, y: 255.1466}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1936851436
 MonoBehaviour:
@@ -7609,6 +7653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05e6e10f057461f9ab7b730cd5b2be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.UIDraggable
+  draggableType: 2
   dragAlpha: 0.6
 --- !u!225 &1936851438
 CanvasGroup:
@@ -7882,6 +7927,7 @@ GameObject:
   - component: {fileID: 2138297811}
   - component: {fileID: 2138297813}
   - component: {fileID: 2138297812}
+  - component: {fileID: 2138297814}
   m_Layer: 5
   m_Name: BigTable
   m_TagString: BigArea
@@ -7905,7 +7951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1703, y: 316}
+  m_AnchoredPosition: {x: 99, y: -186}
   m_SizeDelta: {x: 960, y: 576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138297812
@@ -7946,6 +7992,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138297810}
   m_CullTransparentMesh: 1
+--- !u!114 &2138297814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138297810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3672a3b8e11444d18127683023554742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UIDropZone
+  acceptedTypes: -1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
