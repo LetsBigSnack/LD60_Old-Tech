@@ -14,7 +14,6 @@ namespace UI
         
         private void OnEnable()
         {
-            GetComponentInChildren<TextMeshProUGUI>().text = chapter.ToString();
             GetComponent<Button>().onClick.RemoveAllListeners();
             Debug.Log("Added ActionListener for "+ chapter);
             GetComponent<Button>().onClick.AddListener(() => BookController.Instance.JumpToChapter(chapter));

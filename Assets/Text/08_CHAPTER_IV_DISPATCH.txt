@@ -1,54 +1,42 @@
-<size=120%><b>CHAPTER IV | DISPATCH</b></size>
+<size=120%><b>CHAPTER IV - DISPATCH</b></size>
+Once the telegram has been deciphered, its instructions must be transferred to a dispatch punch card. A standard telegram contains four fields:
+<b>DESTINATION</b>: Receiving department
+<b>TYPE</b>: Classification of correspondence
+<b>HANDLING</b>: Required processing procedure
+<b>REFERENCE</b>: Administrative reference designation
 
-<b>FROM INFORMATION TO ACTION</b>
-
-Once the telegram has been deciphered, its instructions must be transferred to a dispatch punch card.
-
-A standard telegram contains four fields:
-
-DESTINATION: Receiving department
-TYPE: Classification of correspondence
-HANDLING: Required processing procedure
-REFERENCE: Administrative reference designation
-
-<size=110%><b><color=#8B2929>4.1 DISPATCH CARD CONFIGURATION</color></b></size>
-
+[PAGE]
+<size=110%><b><color=#73654a>4.1 DISPATCH CARD CONFIGURATION</color></b></size>
 Column 1: Destination
 Column 2: Mail type
 Column 3: Handling
 Column 4: Reference
 
 For standard dispatch operations, punch exactly one row per column.
-
-<size=110%><b><color=#8B2929>4.2 DESTINATION TABLE</color></b></size>
-
+[PAGE]
+<size=110%><b><color=#73654a>4.2 DESTINATION TABLE</color></b></size>
 1 CIVILIAN
 2 GOVERNMENT
 3 MILITARY
 4 INDUSTRY
 5 INTELLIGENCE
 6 INTERNATIONAL
-
-<size=110%><b><color=#8B2929>4.3 MAIL TYPE TABLE</color></b></size>
-
+<size=110%><b><color=#73654a>4.3 MAIL TYPE TABLE</color></b></size>
 1 PERSONAL
 2 OFFICIAL
 3 CLASSIFIED
 4 COMMERCIAL
 5 DIPLOMATIC
 6 RESTRICTED
-
-<size=110%><b><color=#8B2929>4.4 HANDLING TABLE</color></b></size>
-
+[PAGE]
+<size=110%><b><color=#73654a>4.4 HANDLING TABLE</color></b></size>
 1 DELIVER
 2 HOLD
 3 INSPECT
 4 RETURN
 5 FORWARD
 6 DESTROY
-
-<size=110%><b><color=#8B2929>4.5 REFERENCE TABLE</color></b></size>
-
+<size=110%><b><color=#73654a>4.5 REFERENCE TABLE</color></b></size>
 1 A
 2 B
 3 C

@@ -1,30 +1,24 @@
-<size=120%><b>CHAPTER I | INTRODUCTION</b></size>
-
+<size=120%><b>CHAPTER I - INTRODUCTION</b></size>
 <b>THE PRIVILEGE OF SERVICE</b>
-
 <b>CONGRATULATIONS, COMRADE!</b>
 
 You have been selected to join the elite ranks of the Ministry's Postal Communications Corps.
 
 Of the thousands who apply, only the most disciplined, intelligent, and reliable citizens are entrusted with the sacred duty of directing the nation's correspondence.
-
+[PAGE]
 Every telegram you process contributes to the efficiency, security, and prosperity of our great Union.
 
 <b>A MESSAGE DELAYED IS A NATION BETRAYED.</b>
-
-<size=110%><b><color=#8B2929>1.1 YOUR DUTIES</color></b></size>
-
+[PAGE]
+<size=105%><b><color=#73654a>1.1 YOUR DUTIES</color></b></size>
 <b>I. TELEGRAPH RECEIVER</b>
 Receives encoded messages in International Morse Code. Each transmission begins with a three-letter identification code.
-
 <b>II. PUNCH-CARD STACK</b>
 Provides blank cards for operating Ministry machinery. Punch the appropriate holes according to this handbook.
-
+[PAGE]
 <b>III. DECIPHERING APPARATUS</b>
 Accepts a prepared punch card and converts encrypted telegrams into readable instructions.
-
 <b>IV. DISPATCH TERMINAL</b>
 Accepts a second punch card specifying the destination, classification, handling procedure, and reference designation.
-
 <b>V. ROTARY TELEPHONE</b>
 Connects you to the appropriate department to confirm the completed dispatch.

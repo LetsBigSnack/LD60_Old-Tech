@@ -1,41 +1,37 @@
-<size=120%><b>CHAPTER II | MORSE CODE</b></size>
-
-<b>THE LANGUAGE OF THE TELEGRAPH</b>
-
+<size=120%><b>CHAPTER II - MORSE CODE</b></size>
 All incoming communications arrive in International Morse Code.
 
+<size=120%>
 DOT: . (short signal)
 DASH: - (long signal)
+</size>
 
 Each letter is separated by a space. Words are separated by /. Line breaks indicate separate lines of the telegram.
 
-<size=110%><b><color=#8B2929>2.1 INTERNATIONAL MORSE ALPHABET</color></b></size>
 
-A .-       N -.
-B -...     O ---
-C -.-.     P .--.
-D -..      Q --.-
-E .        R .-.
-F ..-.     S ...
-G --.      T -
-H ....     U ..-
-I ..       V ...-
-J .---     W .--
-K -.-      X -..-
-L .-..     Y -.--
-M --       Z --..
-
-<size=110%><b><color=#8B2929>2.2 NUMERICAL SIGNALS</color></b></size>
-
-0 -----    5 .....
-1 .----    6 -....
-2 ..---    7 --...
-3 ...--    8 ---..
-4 ....-    9 ----.
-
-<size=110%><b><color=#8B2929>2.3 ADDITIONAL SYMBOLS</color></b></size>
-
-Colon (:)  ---...
+[PAGE]
+<size=110%><b><color=#73654a>2.1 INTERNATIONAL MORSE ALPHABET</color></b></size>
+<size=120%>A .-<pos=35%>J .---<pos=70%>S ...
+B -...<pos=35%>K -.-<pos=70%>T -
+C -.-.<pos=35%>L .-..<pos=70%>U ..-
+D -..<pos=35%>M --<pos=70%>V ...-
+E .<pos=35%>N -.<pos=70%>W .--
+F ..-.<pos=35%>O ---<pos=70%>X -..-
+G --.<pos=35%>P .--.<pos=70%>Y -.--
+H ....<pos=35%>Q --.-<pos=70%>Z --..
+I ..<pos=35%>R .-.
+</size>
+[PAGE]
+<size=110%><b><color=#73654a>2.2 NUMERICAL SIGNALS</color></b></size>
+<size=120%>0 -----<pos=50%>5 .....
+1 .----<pos=50%>6 -....
+2 ..---<pos=50%>7 --...
+3 ...--<pos=50%>8 ---..
+4 ....-<pos=50%>9 ----.
+</size>
+<size=110%><b><color=#73654a>2.3 ADDITIONAL SYMBOLS</color></b></size>
+<size=120%>Colon (:)  ---...
 Hyphen (-) -....-
 Word separator: /
 New line: actual line break
+</size>
