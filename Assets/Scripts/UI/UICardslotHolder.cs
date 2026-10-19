@@ -62,7 +62,9 @@ public class UICardslotHolder : MonoBehaviour, IDropHandler
 
         if (!punchcardReceiver.InsertPunchcard(card.PunchCardData))
             return;
-
+        
+        SoundManager.Instance.PlaySFX("Insert_Card");
+        
         punchcard = card;
         card.CurrentSlot = this;
 

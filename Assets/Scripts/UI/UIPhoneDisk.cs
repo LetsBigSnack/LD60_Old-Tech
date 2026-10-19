@@ -205,7 +205,7 @@ public class RotaryPhoneDial : MonoBehaviour,
 
         if (selectedNumber < 0)
             return;
-
+        
         float numberAngle = GetNumberAngle(selectedNumber);
 
         maximumRotation = Mathf.Repeat(
@@ -217,6 +217,9 @@ public class RotaryPhoneDial : MonoBehaviour,
         previousMouseAngle = GetMouseAngle(eventData);
 
         dragging = true;
+        
+        SoundManager.Instance.PlaySFX("Phone_Drag");
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -246,12 +249,13 @@ public class RotaryPhoneDial : MonoBehaviour,
     {
         if (!dragging)
             return;
-
+        
         dragging = false;
         returning = true;
 
         if (currentRotation >= maximumRotation - 2f)
         {
+            SoundManager.Instance.PlaySFX("Phone_Dial");
             PhoneController.Instance.DialNumber(selectedNumber);
             Debug.Log($"Dialed: {selectedNumber}");
         }
@@ -262,6 +266,11 @@ public class RotaryPhoneDial : MonoBehaviour,
         if (!returning)
             return;
 
+        if (!SoundManager.Instance.IsLoopSFXPlaying("Phone_Return"))
+        {
+            SoundManager.Instance.StartLoopSFX("Phone_Return");
+        }
+        
         currentRotation = Mathf.MoveTowards(
             currentRotation,
             0f,
@@ -272,6 +281,7 @@ public class RotaryPhoneDial : MonoBehaviour,
 
         if (currentRotation <= 0f)
         {
+            SoundManager.Instance.StopLoopSFX("Phone_Return");
             returning = false;
             selectedNumber = -1;
         }

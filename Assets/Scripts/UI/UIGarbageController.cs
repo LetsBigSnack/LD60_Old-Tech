@@ -12,7 +12,7 @@ public class UIGarbageController : MonoBehaviour, IDropHandler
         if (!eventData.pointerDrag.TryGetComponent(
                 out UIPunchcardController card))
             return;
-        
+        SoundManager.Instance.PlaySFX("Paper_Crumble");
         Destroy(card.gameObject);
         
     }

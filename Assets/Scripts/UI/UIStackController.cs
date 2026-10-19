@@ -11,6 +11,7 @@ public class UIStackController : MonoBehaviour, IDragHandler, IBeginDragHandler
     {
         GameObject punchCard = Instantiate(punchCardPrefab, transform);
         eventData.pointerDrag = punchCard;
+        SoundManager.Instance.PlaySFX("Take_Paper");
         ExecuteEvents.Execute(punchCard, eventData, ExecuteEvents.beginDragHandler);
     }
 

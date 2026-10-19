@@ -27,12 +27,19 @@ public class PhoneController : MonoBehaviour
     public void Start()
     {
         TransmissionManager.Instance.TransmissionUpdated += Reset;
+        GameManager.Instance.OnDayChange += Reset;
+        Reset();
+    }
+
+    private void Reset(int obj)
+    {
         Reset();
     }
 
     private void OnDestroy()
     {
         TransmissionManager.Instance.TransmissionUpdated -= Reset;
+        GameManager.Instance.OnDayChange += Reset;
     }
 
 

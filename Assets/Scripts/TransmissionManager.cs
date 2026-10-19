@@ -56,6 +56,22 @@ public sealed class TransmissionManager : MonoBehaviour
         Instance = this;
         pastTransmissions =  new List<TransmissionData>();
     }
+
+    private void Start()
+    {
+        GameManager.Instance.OnDayChange += ResetTransmissions;
+    }
+    
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnDayChange -= ResetTransmissions;
+    }
+
+    public void ResetTransmissions(int i)
+    {
+        currentTransmission =  null;
+        TransmissionUpdated?.Invoke();
+    }
     
     public void GenerateTransmission(int dayOfMonth)
     {

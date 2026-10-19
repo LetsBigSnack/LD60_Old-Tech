@@ -40,6 +40,12 @@ public class MorseController : MonoBehaviour, IPunchcardReceiver
     
     private void UpdateDisplay()
     {
+        if (TransmissionManager.Instance.CurrentTransmission == null)
+        {
+            ui.SetDisplayText("");
+            return;
+        }
+        
         if (insertedKeycard == null)
         {
             ui.SetDisplayText(TransmissionManager.Instance.CurrentTransmission.MorseMessage);
