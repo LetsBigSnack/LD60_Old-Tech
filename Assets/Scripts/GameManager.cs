@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
     
     public void EndGame()
     {
+        SoundManager.Instance.StopLoopSFX("Morse");
         totalTransmission += dayTransmission;
         totalCorrectTransmission += dayCorrectTransmission;
         totalIncorrectTransmission += dayIncorrectTransmission;

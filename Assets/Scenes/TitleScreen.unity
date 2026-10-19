@@ -537,18 +537,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: masterVolume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: allSfxSounds.Array.size
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[19]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 638f283678ce15357a884c0e0db1ab73, type: 2}
     - target: {fileID: 6824125143572133421, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
       propertyPath: m_Name
       value: SoundManager
