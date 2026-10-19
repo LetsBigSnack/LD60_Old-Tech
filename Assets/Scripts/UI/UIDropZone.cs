@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -14,7 +15,7 @@ namespace UI
     }
     
     [RequireComponent(typeof(RectTransform))]
-    public class UIDropZone : MonoBehaviour
+    public class UIDropZone : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField]
         private UIDraggableType acceptedTypes = UIDraggableType.All;
@@ -25,6 +26,14 @@ namespace UI
                 return false;
 
             return (acceptedTypes & draggable.DraggableType) != 0;
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (acceptedTypes == UIDraggableType.All)
+            {
+                SoundManager.Instance.PlaySFX("Knock");
+            }
         }
     }
 }

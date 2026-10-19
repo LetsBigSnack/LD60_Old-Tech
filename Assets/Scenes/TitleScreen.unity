@@ -541,6 +541,14 @@ PrefabInstance:
       propertyPath: masterVolume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
+      propertyPath: allSfxSounds.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
+      propertyPath: 'allSfxSounds.Array.data[19]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 638f283678ce15357a884c0e0db1ab73, type: 2}
     - target: {fileID: 6824125143572133421, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -1082,6 +1090,7 @@ GameObject:
   - component: {fileID: 1190613763}
   - component: {fileID: 1190613762}
   - component: {fileID: 1190613766}
+  - component: {fileID: 1190613767}
   m_Layer: 5
   m_Name: UI_Canvas
   m_TagString: Untagged
@@ -1183,6 +1192,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0649d1fa5e6955040866e62742ed9e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &1190613767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190613761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aac748e781cb6e19e66dd0cbc77604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
 --- !u!1 &1214088733

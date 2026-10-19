@@ -52,6 +52,7 @@ public class UIPunchcardController : MonoBehaviour
 
     private void PierceHole(int index)
     {
+        SoundManager.Instance.PlaySFX("Punch", 0.2f);
         punchCardData.Punch(index / 6, index % 6);
         buttons[index].interactable = false;
     }

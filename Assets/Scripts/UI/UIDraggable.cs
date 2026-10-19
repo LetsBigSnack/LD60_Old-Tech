@@ -77,7 +77,7 @@ namespace UI
 
             canvasGroup.alpha = originalAlpha;
             canvasGroup.blocksRaycasts = originalBlocksRaycasts;
-
+            SoundManager.Instance.PlaySFX("Thup");
             IsDragging = false;
             DragEnded?.Invoke();
         }

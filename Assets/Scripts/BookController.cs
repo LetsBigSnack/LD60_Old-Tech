@@ -79,6 +79,7 @@ public class BookController : MonoBehaviour
     public void NextPage()
     {
         if (currentPage + 2 >= bookPages.Count) return;
+        SoundManager.Instance.PlaySFX("Take_Paper", 0.2f);
         currentPage += 2;
         ChangeContent();
     }
@@ -86,6 +87,7 @@ public class BookController : MonoBehaviour
     public void PreviousPage()
     {
         if (currentPage < 2) return;
+        SoundManager.Instance.PlaySFX("Take_Paper", 0.2f);
         currentPage -= 2;
         ChangeContent();
     }
@@ -98,6 +100,7 @@ public class BookController : MonoBehaviour
             Debug.LogWarning($"Chapter start not found: {chapter}", this);
             return;
         }
+        SoundManager.Instance.PlaySFX("Take_Paper", 0.2f);
         currentPage = index - index % 2;
         ChangeContent();
     }

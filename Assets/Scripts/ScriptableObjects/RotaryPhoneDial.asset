@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   soundName: Phone_Dial
   soundClip: {fileID: 8300000, guid: a1149be3a66b28324bffdb8f015ae2c7, type: 3}
-  volume: 100
+  volume: 1

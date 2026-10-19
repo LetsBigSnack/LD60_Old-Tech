@@ -40,6 +40,8 @@ public class MorseController : MonoBehaviour, IPunchcardReceiver
     
     private void UpdateDisplay()
     {
+        SoundManager.Instance.StopLoopSFX("Morse");
+        
         if (TransmissionManager.Instance.CurrentTransmission == null)
         {
             ui.SetDisplayText("");
@@ -48,10 +50,10 @@ public class MorseController : MonoBehaviour, IPunchcardReceiver
         
         if (insertedKeycard == null)
         {
+            SoundManager.Instance.StartLoopSFX("Morse");
             ui.SetDisplayText(TransmissionManager.Instance.CurrentTransmission.MorseMessage);
             return;
         }
-        
         ui.SetDisplayText(DecodeWithCard(insertedKeycard));
     }
 

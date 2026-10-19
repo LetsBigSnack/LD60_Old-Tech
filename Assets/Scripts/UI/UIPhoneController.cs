@@ -36,6 +36,7 @@ public class UIPhoneController : MonoBehaviour
     
     public void ClearNumbers()
     {
+        SoundManager.Instance.PlaySFX("Clear");
         PhoneController.Instance.Reset();
     }
 

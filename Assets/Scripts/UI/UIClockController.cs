@@ -12,8 +12,6 @@ public class UIClockController : MonoBehaviour
 
     public void StartDay()
     {
-        if(!SoundManager.Instance.IsLoopSFXPlaying("Clock_Tick"))
-            SoundManager.Instance.StartLoopSFX("Clock_Tick");
         
         GameManager.Instance.StartWorkDay();
     }

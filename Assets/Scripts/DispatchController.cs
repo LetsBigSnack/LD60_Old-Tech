@@ -29,12 +29,18 @@ public class DispatchController : MonoBehaviour, IPunchcardReceiver
             return false;
 
         insertedKeycard = card;
+
+        if (!SoundManager.Instance.IsLoopSFXPlaying("Tape"))
+        {
+            SoundManager.Instance.StartLoopSFX("Tape");
+        }
         
         return true;
     }
 
     public void RemovePunchcard()
     {
+        SoundManager.Instance.StopLoopSFX("Tape");
         insertedKeycard = null;
     }
 }

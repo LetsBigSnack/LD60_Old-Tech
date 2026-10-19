@@ -120,17 +120,24 @@ public class GameManager : MonoBehaviour
     
     public void SubmitTransmission()
     {
+        if (!isDayRunning)
+        {
+            return;
+        }
         dayTransmission++;
         PunchCardData dispatchDate = DispatchController.Instance.InsertedKeycard;
         string phoneNumber = string.Join("", PhoneController.Instance.DialedNumbers);
 
         if (TransmissionManager.Instance.ValidateSubmission(dispatchDate, phoneNumber))
         {
+            SoundManager.Instance.PlaySFX("Ding");
+            SoundManager.Instance.PlaySFX("Talking");
             currentMoney += rewardMoney;
             dayCorrectTransmission++;
         }
         else
         {
+            SoundManager.Instance.PlaySFX("Error");
             currentMoney += penaltyMoney;
             dayIncorrectTransmission++;
         }
@@ -142,7 +149,6 @@ public class GameManager : MonoBehaviour
     public void EndDay()
     {
         
-        SoundManager.Instance.StopLoopSFX("Clock_Tick");
         SoundManager.Instance.PlaySFX("Clock_Alarm");
         
         isDayRunning =  false;

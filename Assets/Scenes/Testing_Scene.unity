@@ -7112,7 +7112,7 @@ MonoBehaviour:
   currentDay: 0
   maxDays: 5
   currenDayTime: 0
-  timePerDay: 10
+  timePerDay: 240
   isDayRunning: 0
   currentMoney: 0
   rewardMoney: 20
@@ -7711,19 +7711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43469c3e35241347b400dc8d7a6080c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  currentTransmission:
-    Identifier: 
-    DayOfMonth: 0
-    Destination: 
-    MailType: 
-    Handling: 
-    Reference: 
-    Plaintext: 
-    EncryptedText: 
-    MorseMessage: 
-    ExpectedDispatchCard:
-      holes: 000000000000000000000000000000000000000000000000
-    ExpectedPhoneNumber: 
   pastTransmissions: []
 --- !u!4 &1502024463
 Transform:
@@ -9342,6 +9329,7 @@ GameObject:
   - component: {fileID: 1869979648}
   - component: {fileID: 1869979650}
   - component: {fileID: 1869979649}
+  - component: {fileID: 1869979651}
   m_Layer: 5
   m_Name: Poster
   m_TagString: Untagged
@@ -9407,6 +9395,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869979647}
   m_CullTransparentMesh: 1
+--- !u!114 &1869979651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869979647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6d57daf37acf0209f65beddb7ee955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1870777983
 GameObject:
   m_ObjectHideFlags: 0
@@ -10999,7 +10999,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 327102039171583480, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
       propertyPath: m_Volume
-      value: 0.1
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3774277912717556006, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11041,46 +11041,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: masterVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: allSfxSounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 430794a9a0fd106d9ac9593c1f8ff3f4, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: d6a7d49f19ed42845b2b8ac31529c4ea, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: ca67ba74484524111920301361f3dc3e, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 60d176dd66d0c711ea1aab93756f8056, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 503d8fd45696d34f6b13d775623f3150, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[5]'
-      value: 
-      objectReference: {fileID: 11400000, guid: e5938a074bf859bf09acfe7b64d97c72, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[6]'
-      value: 
-      objectReference: {fileID: 11400000, guid: f2d896858dfb0f06cb58af28d72d0d52, type: 2}
-    - target: {fileID: 4658822125406874861, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
-      propertyPath: 'allSfxSounds.Array.data[7]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 18da0405d17bb48ee9a1e3bbc7048ffa, type: 2}
     - target: {fileID: 6824125143572133421, guid: 7a90efc01e9e658de93b6b772c917b29, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -11181,6 +11141,10 @@ PrefabInstance:
     - target: {fileID: 2235339500578330529, guid: d75f933f761d8b245a7eb5ab601c828c, type: 3}
       propertyPath: m_Name
       value: PauseScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235339500578330529, guid: d75f933f761d8b245a7eb5ab601c828c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

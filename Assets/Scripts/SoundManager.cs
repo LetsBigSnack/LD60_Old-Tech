@@ -53,18 +53,22 @@ public class SoundManager : MonoBehaviour
         SetSfxVolume(sfxVolume);
     }
 
-    public void PlaySFX(string name)
+    public void PlaySFX(string name, float pitchVariation = 0f)
     {
         SoundData sound = allSfxSounds.Find(s => s.soundName == name);
 
         if (sound == null)
         {
-            Debug.Log("SFX Sound not found: " + name);
+            Debug.LogWarning("SFX Sound not found: " + name);
             return;
         }
 
-        sfxSource.volume = sound.volume;
-        sfxSource.PlayOneShot(sound.soundClip);
+        sfxSource.pitch = Random.Range(
+            Mathf.Max(0.01f, 1f - pitchVariation),
+            1f + pitchVariation
+        );
+
+        sfxSource.PlayOneShot(sound.soundClip, sound.volume);
     }
     
     
